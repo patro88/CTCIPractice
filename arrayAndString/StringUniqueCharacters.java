@@ -17,20 +17,20 @@ public class StringUniqueCharacters {
 	}
 	
 	
-	public void uniqueChars(String s) {
-		for(Character ch: s.toCharArray()) { 
-				System.out.println("Duplicates exists");
-			
-		}
-		
-		System.out.println("No Duplicates");
+	public boolean isStringUnique(String s) {
+		if(s.length() == 1) return true;
+		String first = s.substring(0,1);
+		String rest = s.substring(1);
+		if(rest.contains(first)) return false;
+		else return isStringUnique(rest);
 	}
 	
 	
 	public static void main(String[] args) {
-		String s = "askderoiwy";
+		String s = "qweiutyfsfdgp";
 		StringUniqueCharacters suc = new StringUniqueCharacters();
-		suc.uniqueCharsUsingArr(s);
-		suc.uniqueChars(s);
+		//suc.uniqueCharsUsingArr(s);
+		if(suc.isStringUnique(s)) System.out.println("No Duplicates");
+		else System.out.println("Duplicates exists");
 	}
 }
